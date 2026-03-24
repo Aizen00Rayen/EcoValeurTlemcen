@@ -17,21 +17,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Logo & tagline */}
           <div>
-            <div className="flex items-center gap-2 mb-3">
-              <svg
-                width="32"
-                height="32"
-                viewBox="0 0 36 36"
-                fill="none"
-              >
-                <circle cx="18" cy="18" r="17" stroke="#52B788" strokeWidth="2" />
-                <path
-                  d="M18 8c-2 4-6 6-6 10a6 6 0 0 0 12 0c0-4-4-6-6-10z"
-                  fill="#52B788"
-                />
-              </svg>
+            <div className="flex items-center gap-3 mb-4">
+              <img
+                src="/ecovaleur.png"
+                alt="Eco Valor Tlemcen"
+                className="h-14 w-auto"
+              />
               <span className="text-white font-heading text-lg font-bold">
-                ♻ Eco Valeur
+                Eco Valor
               </span>
             </div>
             <p className="text-white/60 text-sm">{t.footerTagline}</p>
@@ -39,13 +32,15 @@ export default function Footer() {
 
           {/* Quick links */}
           <div>
-            <h3 className="text-green-mid font-semibold mb-3">{t.footerLinks}</h3>
+            <h3 className="text-green-mid font-semibold mb-3">
+              {t.footerLinks}
+            </h3>
             <ul className="space-y-2">
               {links.map((link) => (
                 <li key={link.to}>
                   <Link
                     to={link.to}
-                    className="text-sm hover:text-green-mid transition-colors"
+                    className="text-sm hover:text-green-mid transition-colors duration-300 hover:translate-x-1 inline-block"
                   >
                     {link.label}
                   </Link>
@@ -61,7 +56,7 @@ export default function Footer() {
               {/* Facebook */}
               <a
                 href="#"
-                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-green-mid/30 transition-colors"
+                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-green-mid/30 hover:scale-110 transition-all duration-300"
                 aria-label="Facebook"
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -71,7 +66,7 @@ export default function Footer() {
               {/* Instagram */}
               <a
                 href="#"
-                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-green-mid/30 transition-colors"
+                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-green-mid/30 hover:scale-110 transition-all duration-300"
                 aria-label="Instagram"
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
@@ -81,7 +76,7 @@ export default function Footer() {
               {/* WhatsApp */}
               <a
                 href="#"
-                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-green-mid/30 transition-colors"
+                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-green-mid/30 hover:scale-110 transition-all duration-300"
                 aria-label="WhatsApp"
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">

@@ -13,7 +13,8 @@ export default function useFadeIn() {
       { threshold: 0.1 }
     );
 
-    const elements = document.querySelectorAll(".fade-in");
+    const selectors = ".fade-in, .slide-in-left, .slide-in-right, .scale-in, .animate-draw-line";
+    const elements = document.querySelectorAll(selectors);
     elements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();

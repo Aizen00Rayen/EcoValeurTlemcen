@@ -24,26 +24,123 @@ html[dir="rtl"] .font-heading {
   font-family: "Noto Kufi Arabic", sans-serif;
 }
 
-/* Fade-in animation */
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== FADE-IN ANIMATION ===== */
 .fade-in {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.7s ease-out, transform 0.7s ease-out;
 }
-
 .fade-in.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Staggered entrance for hero */
+/* ===== SLIDE-IN LEFT ===== */
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.slide-in-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ===== SLIDE-IN RIGHT ===== */
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.slide-in-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ===== SCALE-IN ===== */
+.scale-in {
+  opacity: 0;
+  transform: scale(0.8);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.scale-in.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ===== STAGGERED ENTRANCE ===== */
 .stagger-1 { transition-delay: 0.1s; }
 .stagger-2 { transition-delay: 0.3s; }
 .stagger-3 { transition-delay: 0.5s; }
+.stagger-4 { transition-delay: 0.7s; }
+.stagger-5 { transition-delay: 0.9s; }
 
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
+/* ===== FLOATING ANIMATION ===== */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+}
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* ===== PULSE GREEN GLOW ===== */
+@keyframes pulseGreen {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(82, 183, 136, 0.4); }
+  50% { box-shadow: 0 0 20px 8px rgba(82, 183, 136, 0.15); }
+}
+.animate-pulse-green {
+  animation: pulseGreen 3s ease-in-out infinite;
+}
+
+/* ===== SPIN SLOW ===== */
+@keyframes spinSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow {
+  animation: spinSlow 20s linear infinite;
+}
+
+/* ===== BOUNCE SUBTLE ===== */
+@keyframes bounceSoft {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.animate-bounce-soft {
+  animation: bounceSoft 2s ease-in-out infinite;
+}
+
+/* ===== GRADIENT SHIFT ===== */
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradientShift 6s ease infinite;
+}
+
+/* ===== DRAW LINE ===== */
+@keyframes drawLine {
+  from { width: 0; }
+  to { width: 100%; }
+}
+.animate-draw-line.visible {
+  animation: drawLine 1.5s ease-out forwards;
+}
+
+/* ===== COUNTER NUMBER ===== */
+@keyframes countPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
 }
 
 /* Custom scrollbar */

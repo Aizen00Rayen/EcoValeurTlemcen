@@ -22,27 +22,13 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2 group">
-            <svg
-              width="36"
-              height="36"
-              viewBox="0 0 36 36"
-              fill="none"
-              className="transition-transform group-hover:rotate-12"
-            >
-              <circle cx="18" cy="18" r="17" stroke="#52B788" strokeWidth="2" />
-              <path
-                d="M18 8c-2 4-6 6-6 10a6 6 0 0 0 12 0c0-4-4-6-6-10z"
-                fill="#52B788"
-              />
-              <path
-                d="M12 22l3-3m6 3l-3-3m0-6v9"
-                stroke="#1B4332"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-              />
-            </svg>
-            <span className="text-white font-heading text-xl font-bold">
-              ♻ Eco Valeur
+            <img
+              src="/ecovaleur.png"
+              alt="Eco Valor Tlemcen"
+              className="h-11 w-auto transition-transform duration-300 group-hover:scale-110"
+            />
+            <span className="text-white font-heading text-lg font-bold hidden sm:inline">
+              Eco Valor
             </span>
           </Link>
 
@@ -52,24 +38,27 @@ export default function Navbar() {
               <Link
                 key={link.to}
                 to={link.to}
-                className={`text-sm font-medium transition-colors hover:text-green-mid ${
+                className={`relative text-sm font-medium transition-colors duration-300 hover:text-green-mid ${
                   location.pathname === link.to
                     ? "text-green-mid"
                     : "text-white/80"
                 }`}
               >
                 {link.label}
+                {location.pathname === link.to && (
+                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-green-mid rounded-full" />
+                )}
               </Link>
             ))}
             <button
               onClick={toggleLang}
-              className="ml-2 px-3 py-1 rounded-full bg-green-mid/20 text-green-mid text-sm font-semibold hover:bg-green-mid/30 transition-colors border border-green-mid/30"
+              className="ml-2 px-3 py-1 rounded-full bg-green-mid/20 text-green-mid text-sm font-semibold hover:bg-green-mid/30 transition-all duration-300 border border-green-mid/30 hover:scale-105"
             >
               {t.langToggle}
             </button>
           </div>
 
-          {/* Hamburger */}
+          {/* Mobile controls */}
           <div className="md:hidden flex items-center gap-3">
             <button
               onClick={toggleLang}
@@ -82,7 +71,15 @@ export default function Navbar() {
               className="text-white p-1"
               aria-label="Menu"
             >
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              >
                 {menuOpen ? (
                   <>
                     <line x1="18" y1="6" x2="6" y2="18" />
@@ -102,26 +99,28 @@ export default function Navbar() {
       </div>
 
       {/* Mobile menu */}
-      {menuOpen && (
-        <div className="md:hidden bg-forest/98 border-t border-green-mid/20">
-          <div className="px-4 py-3 space-y-2">
-            {links.map((link) => (
-              <Link
-                key={link.to}
-                to={link.to}
-                onClick={() => setMenuOpen(false)}
-                className={`block px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                  location.pathname === link.to
-                    ? "text-green-mid bg-green-mid/10"
-                    : "text-white/80 hover:text-green-mid hover:bg-green-mid/5"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </div>
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-300 ${
+          menuOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <div className="bg-forest/98 border-t border-green-mid/20 px-4 py-3 space-y-2">
+          {links.map((link) => (
+            <Link
+              key={link.to}
+              to={link.to}
+              onClick={() => setMenuOpen(false)}
+              className={`block px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+                location.pathname === link.to
+                  ? "text-green-mid bg-green-mid/10"
+                  : "text-white/80 hover:text-green-mid hover:bg-green-mid/5"
+              }`}
+            >
+              {link.label}
+            </Link>
+          ))}
         </div>
-      )}
+      </div>
     </nav>
   );
 }
